@@ -271,3 +271,63 @@ foreach ($books as $book) {
 }
 ?>
 
+13.big answer
+<?php
+// Step 1: Connect to database
+$conn = mysqli_connect("localhost", "root", "", "library_db");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Step 2: Add a new book
+if (isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $year = $_POST['year'];
+
+    $sql = "INSERT INTO books (title, author, year) VALUES ('$title', '$author', '$year')";
+    if (mysqli_query($conn, $sql)) {
+        echo "<p style='color:green;'>Book added successfully!</p>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+?>
+
+<h2>Add New Book</h2>
+<form method="post">
+    Title: <input type="text" name="title" required><br><br>
+    Author: <input type="text" name="author" required><br><br>
+    Year: <input type="number" name="year" required><br><br>
+    <input type="submit" name="submit" value="Add Book">
+</form>
+
+<h2>All Books</h2>
+<?php
+// Step 3: Display all books
+$sql = "SELECT * FROM books";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "<table border='1' cellpadding='5'>";
+    echo "<tr><th>ID</th><th>Title</th><th>Author</th><th>Year</th></tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                <td>".$row['id']."</td>
+                <td>".$row['title']."</td>
+                <td>".$row['author']."</td>
+                <td>".$row['year']."</td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "<p>No books found.</p>";
+}
+
+// Step 4: Close connection
+mysqli_close($conn);
+?>
+
+
