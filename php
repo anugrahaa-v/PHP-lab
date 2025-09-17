@@ -1,4 +1,4 @@
-1. Personal Portfolio Website using HTML
+ 1.html and css
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +42,7 @@
 
 </body>
 </html>
+
 
 3. Inventory Management using Control Structures and Loops in PHP
 
@@ -152,21 +153,39 @@ if ($username == "admin" && $password == "pass") {
 }
 ?>
 
-10. Shopping Cart Management using Cookies and Sessions in PHP
+//dashboard.php
+<?php
+echo "<h1>Welcome to Dashboard!</h1>";
+echo "<p>Login successful.</p>";
+?>
 
+
+
+10. Shopping Cart Management using Cookies and Sessions in PHP
 <?php
 session_start();
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-if (isset($_GET['item'])) {
-    $_SESSION['cart'][] = $_GET['item'];
+if (isset($_GET['add'])) {
+    $_SESSION['cart'][] = $_GET['add'];
 }
 
-echo "Cart items:<br>";
-foreach ($_SESSION['cart'] as $item) {
-    echo "- $item<br>";
+echo "<h3>Cart Items:</h3>";
+if (empty($_SESSION['cart'])) {
+    echo "No items in cart.<br>";
+} else {
+    foreach ($_SESSION['cart'] as $c) {
+        echo "- $c <br>";
+    }
+}
+
+echo "<h3>Available Items:</h3>";
+$items = ["Apple", "Banana", "Orange"];
+foreach ($items as $i) {
+    echo "<a href='?add=$i'>Add $i</a><br>";
 }
 ?>
 
@@ -271,7 +290,8 @@ foreach ($books as $book) {
 }
 ?>
 
-13.big answer
+//or choice
+
 <?php
 // Step 1: Connect to database
 $conn = mysqli_connect("localhost", "root", "", "library_db");
