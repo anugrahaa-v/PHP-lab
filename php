@@ -1,72 +1,145 @@
- 1.html and css
-<!DOCTYPE html>
+final list programs
+
+1,2 html and css
+
 <html>
 <head>
-    <title>Anu's Portfolio</title>
-    <style>
-        body {font-family: Arial, sans-serif; margin:0; background:#f5f5f5; scroll-behavior: smooth;}
-        header, footer {background: purple; color:white; text-align:center; padding:15px;}
-        nav {text-align:center; margin:10px 0;}
-        nav a {margin:0 15px; text-decoration:none; color: white; font-weight:bold;}
-        section {padding:20px; max-width:600px; margin:20px auto; background:white; border-radius:8px;}
-        h1, h2 {margin:5px 0;}
-    </style>
+  <title>Hotel Management System</title>
+
+  <style>
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      background: #34495e;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      margin: 20px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+    #successMessage {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Anu's Portfolio</h1>
-    <p>Showcasing my skills</p>
-</header>
+  <header>
+    <h1>Welcome to DreamStay Hotel</h1>
+    <p>Your comfort is our priority</p>
+  </header>
 
-<nav>
-    <a href="#about">About Me</a>
-    <a href="#contact">Contact</a>
-</nav>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Rooms</a>
+    <a href="#">Services</a>
+    <a href="#">Booking</a>
+    <a href="#">Contact</a>
+  </nav>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p style="color:green; font-weight:bold;">
-        Hello! I'm Anu, a computer science student passionate about web development.
-    </p>
-</section>
+  <section>
+    <h2 style="color:blue;">About Us</h2> 
+    <p>DreamStay Hotel offers luxury rooms, fine dining, and the best hospitality experience for your stay.</p>
+  </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p style="color:blue; font-weight:bold;">Email: anu@example.com</p>
-</section>
+  <section>
+    <h2>Available Rooms</h2>
+    <ul>
+      <li>Deluxe Room - ₹5000/night</li>
+      <li>Suite Room - ₹8000/night</li>
+      <li>Presidential Suite - ₹15000/night</li>
+    </ul>
+  </section>
 
-<footer>
-    <p>&copy; 2025 Anu. All rights reserved.</p>
-</footer>
+  <section>
+    <h2>Booking Form</h2>
+    <form id="bookingForm">
+      <label>Name:</label><br>
+      <input type="text" placeholder="Enter your name" required><br><br>
 
+      <label>Email:</label><br>
+      <input type="email" placeholder="Enter your email" required><br><br>
+
+      <label>Room Type:</label><br>
+      <select required>
+        <option>Deluxe</option>
+        <option>Suite</option>
+        <option>Presidential Suite</option>
+      </select><br><br>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <p id="successMessage"> Booking Successful! Thank you for choosing DreamStay Hotel.</p>
+  </section>
+  <footer>
+    <p>2025 DreamStay Hotel | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    bookingForm.onsubmit = function(e) {
+      e.preventDefault();
+      successMessage.style.display = "block";
+      this.reset();
+    }
+  </script>
+  
 </body>
 </html>
 
-
-3. Inventory Management using Control Structures and Loops in PHP
+3.inventory control structures and loops
 
 <?php
 $items = ["Pen" => 20, "Notebook" => 15, "Eraser" => 10];
+$prices = ["Pen" => 5, "Notebook" => 20, "Eraser" => 3];
+$totalInventoryValue = 0;
 foreach ($items as $item => $qty) {
+    $price = $prices[$item];
+    $value = $qty * $price;
+    $totalInventoryValue += $value;
+
+    echo "Item: $item | Quantity: $qty | Price: $$price | Total Value: $$value<br>";
+
     if ($qty < 15) {
-        echo "Restock needed for: $item<br>";
+        echo "<strong>Restock needed for: $item</strong><br><br>";
     } else {
-        echo "$item is sufficiently stocked.<br>";
+        echo "$item is sufficiently stocked.<br><br>";
     }
 }
+echo "<hr>";
+echo "<strong>Total Inventory Value: $$totalInventoryValue</strong>";
 ?>
 
-4. Text Formatting and Operations using String Functions in PHP
+4.string functions
 
 <?php
 $text = "Hello World";
-echo strtoupper($text) . "<br>";  // Outputs: HELLO WORLD
-echo strtolower($text) . "<br>";  // Outputs: hello world
-echo "Length: " . strlen($text);
+echo strtoupper($text) . "<br>";
+echo strtolower($text) . "<br>";
+echo "Length: " . strlen($text) . "<br>";
+echo "Reversed: " . strrev($text) . "<br>";
+echo "Word Count: " . str_word_count($text) . "<br>";
+echo "Position of 'World': " . strpos($text, "World") . "<br>";
+echo "Replace 'World' with 'PHP': " . str_replace("World", "PHP", $text) . "<br>";
+echo "Substring (0, 5): " . substr($text, 0, 5) . "<br>";
+echo "Trimmed: '" . trim("   Hello World   ") . "'<br>";
 ?>
 
-5. Student Grade Calculation using Arrays and Functions in PHP
+5.array and functions in php
 
 <?php
 function calculateGrade($marks) {
@@ -83,8 +156,7 @@ foreach ($students as $name => $marks) {
 }
 ?>
 
-
-6. Online Registration Form Handling using PHP
+6.Form handling 
 
 <form method="post" action="register.php">
     Name: <input type="text" name="name"><br>
@@ -92,104 +164,150 @@ foreach ($students as $name => $marks) {
     <input type="submit" value="Register">
 </form>
 
-// register.php
+
+register.php
+
 <?php
-$name = $_POST['name'];
-$email = $_POST['email'];
-echo "Registered Name: $name<br>Email: $email";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    echo "Registered Name: $name<br>Email: $email";
+}
 ?>
 
-7. Employee Salary Details using Advanced Arrays in PHP
+7.advance array
 
 <?php
+
 $employees = [
     ["name" => "John", "salary" => 5000],
     ["name" => "Jane", "salary" => 6000],
+    ["name" => "Alice", "salary" => 7000],
 ];
 
+$totalPayroll = 0;
+
 foreach ($employees as $emp) {
-    echo "Employee: {$emp['name']}, Salary: \${$emp['salary']}<br>";
+    $name = $emp['name'];
+    $salary = $emp['salary'];
+   
+    $bonus = ($salary > 5500) ? $salary * 0.10 : $salary * 0.05;
+    $netSalary = $salary + $bonus;
+    $totalPayroll += $netSalary;
+
+    echo "Employee: $name<br>";
+    echo "Base Salary: $" . number_format($salary, 2) . "<br>";
+    echo "Bonus: $" . number_format($bonus, 2) . "<br>";
+    echo "<strong>Net Salary: $" . number_format($netSalary, 2) . "</strong><br><br>";
 }
+
+echo "<hr>";
+echo "<strong>Total Payroll (including bonuses): $" . number_format($totalPayroll, 2) . "</strong>";
+
 ?>
-8. Bank Transaction Handling using Exception Handling in PHP
+
+8.exception handling
+
+<?php 
+function withdraw($balance, $amount) { 
+if ($amount > $balance)  
+throw new Exception("Insufficient Balance!"); 
+if ($amount <= 0)  
+throw new Exception("Invalid withdrawal amount!"); 
+echo "Withdrawn: $amount</p>"; 
+echo "Balance: " . ($balance - $amount) . "</p>"; 
+return $balance - $amount; 
+} 
+try { 
+$balance = 5000; 
+echo "<h2>Bank Transaction</h2>"; 
+echo "Initial Balance: $balance</p>"; 
+$balance = withdraw($balance, 2000); 
+$balance = withdraw($balance, 4000);  
+} catch (Exception $e) { 
+echo "Error: " . $e->getMessage() . "</p>"; 
+} 
+?> 
+
+9.server side validation and page redirection 
+
+index.php
 
 <?php
-$balance = 1000;
-
-function withdraw($amount) {
-    global $balance;
-    if ($amount > $balance) {
-        throw new Exception("Insufficient balance");
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    if ($_POST['username'] == "admin" && $_POST['password'] == "pass") {
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        echo "Invalid login";
     }
-    $balance -= $amount;
-    return $balance;
-}
-
-try {
-    echo "Remaining Balance: " . withdraw(1200);
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
 }
 ?>
-
-9. Server-Side Validation and Page Redirection for Login Form in PHP
-
-<form method="post" action="dashboard.php">
-    Username: <input type="text" name="username"><br>
-    Password: <input type="password" name="password"><br>
+<form method="post">
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
     <input type="submit" value="Login">
 </form>
 
-// login.php
-<?php
-$username = $_POST['username'];
-$password = $_POST['password'];
+dashboard.php
 
-if ($username == "admin" && $password == "pass") {
-    header("Location: dashboard.php");
-    exit();
-} else {
-    echo "Invalid login";
-}
-?>
-
-//dashboard.php
 <?php
 echo "<h1>Welcome to Dashboard!</h1>";
 echo "<p>Login successful.</p>";
 ?>
 
+10.sessions and cookies
 
-
-10. Shopping Cart Management using Cookies and Sessions in PHP
 <?php
+// Start session (must be first line)
 session_start();
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
+// --- COOKIE PART ---
+// If cookie not set, create one
+if (!isset($_COOKIE['user'])) {
+    setcookie("user", "Anu", time() + 3600, "/"); // 1 hour
 }
 
-if (isset($_GET['add'])) {
-    $_SESSION['cart'][] = $_GET['add'];
-}
-
-echo "<h3>Cart Items:</h3>";
-if (empty($_SESSION['cart'])) {
-    echo "No items in cart.<br>";
-} else {
-    foreach ($_SESSION['cart'] as $c) {
-        echo "- $c <br>";
-    }
-}
-
-echo "<h3>Available Items:</h3>";
-$items = ["Apple", "Banana", "Orange"];
-foreach ($items as $i) {
-    echo "<a href='?add=$i'>Add $i</a><br>";
+// --- SESSION PART ---
+// If session not set, create one
+if (!isset($_SESSION['username'])) {
+    $_SESSION['username'] = "student";
 }
 ?>
+<html>
+<head><title>Session & Cookie Demo</title></head>
+<body>
+<h2>PHP Session & Cookie Example</h2>
 
-11. Image Uploading Application using PHP
+<p><b>Cookie value:</b> 
+<?php echo isset($_COOKIE['user']) ? $_COOKIE['user'] : "Cookie not set yet (refresh page)"; ?>
+</p>
+
+<p><b>Session value:</b> 
+<?php echo $_SESSION['username']; ?>
+</p>
+
+<form method="post">
+    <button name="logout">Clear Session & Cookie</button>
+</form>
+
+<?php
+// Logout / clear both
+if (isset($_POST['logout'])) {
+    // Clear session
+    $_SESSION = [];
+    session_destroy();
+
+    // Clear cookie
+    setcookie("user", "", time() - 3600, "/");
+
+    echo "<p style='color:red;'>Session and Cookie cleared. Refresh page!</p>";
+}
+?>
+</body>
+</html>
+
+11.file or img  upload using php
 
 <form method="post" enctype="multipart/form-data" action="upload.php">
     Select Image: <input type="file" name="image"><br>
@@ -217,137 +335,76 @@ if(isset($_FILES['image'])){
     echo "No file selected.";
 }
 ?>
-12. Student Database Connectivity using PHP and MySQL
+
+12.db connectivity
 
 <?php
-// Step 1: Connect to database
+// Connect to database
 $conn = new mysqli("localhost", "root", "", "student_db");
-
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Step 2: Handle form submission to add a new student
+// Add student if form submitted
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $grade = $_POST['grade'];
-
-    $sql = "INSERT INTO students (name, grade) VALUES ('$name', '$grade')";
-    if($conn->query($sql) === TRUE){
-        echo "<p style='color:green;'>Student added successfully!</p>";
-    } else {
-        echo "<p style='color:red;'>Error: " . $conn->error . "</p>";
-    }
+    $conn->query("INSERT INTO students (name, grade) VALUES ('$name','$grade')");
+    echo "Student added!<br>";
 }
 ?>
-
-<h2>Add New Student</h2>
+<h2>Add Student</h2>
 <form method="post">
-    Name: <input type="text" name="name" maxlength="25" required><br><br>
-    Grade: <input type="text" name="grade" maxlength="10" required><br><br>
-    <input type="submit" name="submit" value="Add Student">
+    Name: <input type="text" name="name"><br>
+    Grade: <input type="text" name="grade"><br>
+    <input type="submit" name="submit" value="Add">
 </form>
-
-<h2>All Students</h2>
+<h2>Students List</h2>
 <?php
-// Step 3: Fetch and display all students
+// Display all students
 $result = $conn->query("SELECT * FROM students");
-
-if($result->num_rows > 0){
-    echo "<table border='1' cellpadding='5'>";
-    echo "<tr><th>ID</th><th>Name</th><th>Grade</th></tr>";
-    while($row = $result->fetch_assoc()){
-        echo "<tr>
-                <td>".$row['id']."</td>
-                <td>".$row['name']."</td>
-                <td>".$row['grade']."</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "<p>No students found.</p>";
+while($row = $result->fetch_assoc()){
+    echo $row['id']." - ".$row['name']." - ".$row['grade']."<br>";
 }
 
-// Step 4: Close connection
 $conn->close();
 ?>
 
-13. Library Management using MySQL Functions in PHP
+
+13.mysql functions 
 
 <?php
+// Connect to database
 $conn = mysqli_connect("localhost", "root", "", "library_db");
-
-function getBooks($conn) {
-    $query = "SELECT * FROM books";
-    $result = mysqli_query($conn, $query);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-
-$books = getBooks($conn);
-foreach ($books as $book) {
-    echo $book['title'] . " by " . $book['author'] . "<br>";
-}
-?>
-
-//or choice
-
-<?php
-// Step 1: Connect to database
-$conn = mysqli_connect("localhost", "root", "", "library_db");
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Step 2: Add a new book
-if (isset($_POST['submit'])) {
+if (!$conn) die("Connection failed: " . mysqli_connect_error());
+// Add book if form submitted
+if(isset($_POST['submit'])){
     $title = $_POST['title'];
     $author = $_POST['author'];
     $year = $_POST['year'];
-
-    $sql = "INSERT INTO books (title, author, year) VALUES ('$title', '$author', '$year')";
-    if (mysqli_query($conn, $sql)) {
-        echo "<p style='color:green;'>Book added successfully!</p>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+    mysqli_query($conn, "INSERT INTO books (title, author, year) VALUES ('$title','$author','$year')");
+    echo "Book added!<br>";
 }
 ?>
-
 <h2>Add New Book</h2>
 <form method="post">
-    Title: <input type="text" name="title" required><br><br>
-    Author: <input type="text" name="author" required><br><br>
-    Year: <input type="number" name="year" required><br><br>
+    Title: <input type="text" name="title"><br>
+    Author: <input type="text" name="author"><br>
+    Year: <input type="number" name="year"><br>
     <input type="submit" name="submit" value="Add Book">
 </form>
 
 <h2>All Books</h2>
 <?php
-// Step 3: Display all books
-$sql = "SELECT * FROM books";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-    echo "<table border='1' cellpadding='5'>";
-    echo "<tr><th>ID</th><th>Title</th><th>Author</th><th>Year</th></tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>
-                <td>".$row['id']."</td>
-                <td>".$row['title']."</td>
-                <td>".$row['author']."</td>
-                <td>".$row['year']."</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "<p>No books found.</p>";
+// Display all books
+$result = mysqli_query($conn, "SELECT * FROM books");
+while($row = mysqli_fetch_assoc($result)){
+    echo $row['id'] . " - " . $row['title'] . " by " . $row['author'] . " (" . $row['year'] . ")<br>";
 }
-
-// Step 4: Close connection
 mysqli_close($conn);
 ?>
+
+
+
 
 
