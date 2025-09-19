@@ -1,0 +1,28 @@
+<?php
+
+$employees = [
+    ["name" => "John", "salary" => 5000],
+    ["name" => "Jane", "salary" => 6000],
+    ["name" => "Alice", "salary" => 7000],
+];
+
+$totalPayroll = 0;
+
+foreach ($employees as $emp) {
+    $name = $emp['name'];
+    $salary = $emp['salary'];
+   
+    $bonus = ($salary > 5500) ? $salary * 0.10 : $salary * 0.05;
+    $netSalary = $salary + $bonus;
+    $totalPayroll += $netSalary;
+
+    echo "Employee: $name<br>";
+    echo "Base Salary: $" . number_format($salary, 2) . "<br>";
+    echo "Bonus: $" . number_format($bonus, 2) . "<br>";
+    echo "<strong>Net Salary: $" . number_format($netSalary, 2) . "</strong><br><br>";
+}
+
+echo "<hr>";
+echo "<strong>Total Payroll (including bonuses): $" . number_format($totalPayroll, 2) . "</strong>";
+
+?>
