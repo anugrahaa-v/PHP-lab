@@ -1,0 +1,16 @@
+<form method="post" action="register.php">
+    Name: <input type="text" name="name"><br>
+    Email: <input type="email" name="email"><br>
+    <input type="submit" value="Register">
+</form>
+
+
+register.php
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    echo "Registered Name: $name<br>Email: $email";
+}
+?>
