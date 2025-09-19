@@ -1,0 +1,25 @@
+index.php
+
+<?php
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    if ($_POST['username'] == "admin" && $_POST['password'] == "pass") {
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        echo "Invalid login";
+    }
+}
+?>
+<form method="post">
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="submit" value="Login">
+</form>
+
+dashboard.php
+
+<?php
+echo "<h1>Welcome to Dashboard!</h1>";
+echo "<p>Login successful.</p>";
+?>
+
