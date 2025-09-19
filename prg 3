@@ -1,0 +1,20 @@
+<?php
+$items = ["Pen" => 20, "Notebook" => 15, "Eraser" => 10];
+$prices = ["Pen" => 5, "Notebook" => 20, "Eraser" => 3];
+$totalInventoryValue = 0;
+foreach ($items as $item => $qty) {
+    $price = $prices[$item];
+    $value = $qty * $price;
+    $totalInventoryValue += $value;
+
+    echo "Item: $item | Quantity: $qty | Price: $$price | Total Value: $$value<br>";
+
+    if ($qty < 15) {
+        echo "<strong>Restock needed for: $item</strong><br><br>";
+    } else {
+        echo "$item is sufficiently stocked.<br><br>";
+    }
+}
+echo "<hr>";
+echo "<strong>Total Inventory Value: $$totalInventoryValue</strong>";
+?>
