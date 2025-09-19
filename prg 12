@@ -1,0 +1,31 @@
+<?php
+// Connect to database
+$conn = new mysqli("localhost", "root", "", "student_db");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Add student if form submitted
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $grade = $_POST['grade'];
+    $conn->query("INSERT INTO students (name, grade) VALUES ('$name','$grade')");
+    echo "Student added!<br>";
+}
+?>
+<h2>Add Student</h2>
+<form method="post">
+    Name: <input type="text" name="name"><br>
+    Grade: <input type="text" name="grade"><br>
+    <input type="submit" name="submit" value="Add">
+</form>
+<h2>Students List</h2>
+<?php
+// Display all students
+$result = $conn->query("SELECT * FROM students");
+while($row = $result->fetch_assoc()){
+    echo $row['id']." - ".$row['name']." - ".$row['grade']."<br>";
+}
+
+$conn->close();
+?>
