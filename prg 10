@@ -1,0 +1,48 @@
+<?php
+// Start session (must be first line)
+session_start();
+
+// --- COOKIE PART ---
+// If cookie not set, create one
+if (!isset($_COOKIE['user'])) {
+    setcookie("user", "Anu", time() + 3600, "/"); // 1 hour
+}
+
+// --- SESSION PART ---
+// If session not set, create one
+if (!isset($_SESSION['username'])) {
+    $_SESSION['username'] = "student";
+}
+?>
+<html>
+<head><title>Session & Cookie Demo</title></head>
+<body>
+<h2>PHP Session & Cookie Example</h2>
+
+<p><b>Cookie value:</b> 
+<?php echo isset($_COOKIE['user']) ? $_COOKIE['user'] : "Cookie not set yet (refresh page)"; ?>
+</p>
+
+<p><b>Session value:</b> 
+<?php echo $_SESSION['username']; ?>
+</p>
+
+<form method="post">
+    <button name="logout">Clear Session & Cookie</button>
+</form>
+
+<?php
+// Logout / clear both
+if (isset($_POST['logout'])) {
+    // Clear session
+    $_SESSION = [];
+    session_destroy();
+
+    // Clear cookie
+    setcookie("user", "", time() - 3600, "/");
+
+    echo "<p style='color:red;'>Session and Cookie cleared. Refresh page!</p>";
+}
+?>
+</body>
+</html>
