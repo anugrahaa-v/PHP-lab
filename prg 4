@@ -1,0 +1,12 @@
+<?php
+$text = "Hello World";
+echo strtoupper($text) . "<br>";
+echo strtolower($text) . "<br>";
+echo "Length: " . strlen($text) . "<br>";
+echo "Reversed: " . strrev($text) . "<br>";
+echo "Word Count: " . str_word_count($text) . "<br>";
+echo "Position of 'World': " . strpos($text, "World") . "<br>";
+echo "Replace 'World' with 'PHP': " . str_replace("World", "PHP", $text) . "<br>";
+echo "Substring (0, 5): " . substr($text, 0, 5) . "<br>";
+echo "Trimmed: '" . trim("   Hello World   ") . "'<br>";
+?>
