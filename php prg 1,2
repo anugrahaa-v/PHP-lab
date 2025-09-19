@@ -1,0 +1,104 @@
+
+<html>
+<head>
+  <title>Hotel Management System</title>
+
+  <style>
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      background: #34495e;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      margin: 20px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+    #successMessage {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to DreamStay Hotel</h1>
+    <p>Your comfort is our priority</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Rooms</a>
+    <a href="#">Services</a>
+    <a href="#">Booking</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section>
+    <h2 style="color:blue;">About Us</h2> 
+    <p>DreamStay Hotel offers luxury rooms, fine dining, and the best hospitality experience for your stay.</p>
+  </section>
+
+  <section>
+    <h2>Available Rooms</h2>
+    <ul>
+      <li>Deluxe Room - ₹5000/night</li>
+      <li>Suite Room - ₹8000/night</li>
+      <li>Presidential Suite - ₹15000/night</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Booking Form</h2>
+    <form id="bookingForm">
+      <label>Name:</label><br>
+      <input type="text" placeholder="Enter your name" required><br><br>
+
+      <label>Email:</label><br>
+      <input type="email" placeholder="Enter your email" required><br><br>
+
+      <label>Room Type:</label><br>
+      <select required>
+        <option>Deluxe</option>
+        <option>Suite</option>
+        <option>Presidential Suite</option>
+      </select><br><br>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <p id="successMessage"> Booking Successful! Thank you for choosing DreamStay Hotel.</p>
+  </section>
+  <footer>
+    <p>2025 DreamStay Hotel | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    bookingForm.onsubmit = function(e) {
+      e.preventDefault();
+      successMessage.style.display = "block";
+      this.reset();
+    }
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
