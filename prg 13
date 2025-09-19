@@ -1,0 +1,30 @@
+<?php
+// Connect to database
+$conn = mysqli_connect("localhost", "root", "", "library_db");
+if (!$conn) die("Connection failed: " . mysqli_connect_error());
+// Add book if form submitted
+if(isset($_POST['submit'])){
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $year = $_POST['year'];
+    mysqli_query($conn, "INSERT INTO books (title, author, year) VALUES ('$title','$author','$year')");
+    echo "Book added!<br>";
+}
+?>
+<h2>Add New Book</h2>
+<form method="post">
+    Title: <input type="text" name="title"><br>
+    Author: <input type="text" name="author"><br>
+    Year: <input type="number" name="year"><br>
+    <input type="submit" name="submit" value="Add Book">
+</form>
+
+<h2>All Books</h2>
+<?php
+// Display all books
+$result = mysqli_query($conn, "SELECT * FROM books");
+while($row = mysqli_fetch_assoc($result)){
+    echo $row['id'] . " - " . $row['title'] . " by " . $row['author'] . " (" . $row['year'] . ")<br>";
+}
+mysqli_close($conn);
+?>
