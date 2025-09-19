@@ -1,0 +1,26 @@
+<form method="post" enctype="multipart/form-data" action="upload.php">
+    Select Image: <input type="file" name="image"><br>
+    <input type="submit" value="Upload">
+</form>
+
+// upload.php
+<?php
+if(isset($_FILES['image'])){
+    $file_name = $_FILES['image']['name'];
+    $file_tmp = $_FILES['image']['tmp_name'];
+
+    // Create uploads folder if it doesn't exist
+    if(!is_dir("uploads")){
+        mkdir("uploads", 0777, true);
+    }
+
+    // Move uploaded file
+    if(move_uploaded_file($file_tmp, "uploads/" . $file_name)){
+        echo "Image uploaded successfully: <a href='uploads/$file_name'>View Image</a>";
+    } else {
+        echo "Failed to upload image.";
+    }
+} else {
+    echo "No file selected.";
+}
+?>
